@@ -7,5 +7,5 @@ gemspec
 gem "rake"
 gem "rubyzip"
 gem "rubocop"
-gem "ruby-lsp"
+gem "ruby-lsp" unless RUBY_ENGINE == "jruby"
 gem "maxitest"

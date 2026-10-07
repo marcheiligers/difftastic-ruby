@@ -11,10 +11,11 @@ GEM
     dispersion (0.2.0)
       prism
     json (2.18.0)
+    json (2.18.0-java)
     language_server-protocol (3.17.0.5)
     lint_roller (1.1.0)
-    logger (1.6.5)
-    maxitest (6.1.0)
+    logger (1.7.0)
+    maxitest (6.2.0)
       minitest (>= 5.20.0, < 5.28.0)
     minitest (5.27.0)
     parallel (1.27.0)
@@ -25,10 +26,13 @@ GEM
       dispersion (~> 0.2)
     prism (1.7.0)
     racc (1.8.1)
+    racc (1.8.1-java)
     rainbow (3.1.1)
     rake (13.2.1)
-    rbs (3.8.1)
+    rbs (4.2.0)
       logger
+      prism (>= 1.6.0)
+      tsort
     regexp_parser (2.11.3)
     rubocop (1.82.0)
       json (~> 2.3)
@@ -44,14 +48,13 @@ GEM
     rubocop-ast (1.48.0)
       parser (>= 3.3.7.2)
       prism (~> 1.4)
-    ruby-lsp (0.23.8)
+    ruby-lsp (0.26.10)
       language_server-protocol (~> 3.17.0)
       prism (>= 1.2, < 2.0)
-      rbs (>= 3, < 4)
-      sorbet-runtime (>= 0.5.10782)
+      rbs (>= 3, < 5)
     ruby-progressbar (1.13.0)
     rubyzip (2.4.1)
-    sorbet-runtime (0.5.11802)
+    tsort (0.2.0)
     unicode-display_width (3.2.0)
       unicode-emoji (~> 4.1)
     unicode-emoji (4.2.0)
@@ -63,6 +66,7 @@ PLATFORMS
   arm-linux-musl
   arm64-darwin
   ruby
+  universal-java
   x86_64-darwin
   x86_64-linux
   x86_64-linux-gnu

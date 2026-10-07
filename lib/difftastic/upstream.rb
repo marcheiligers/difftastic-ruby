@@ -11,5 +11,12 @@ module Difftastic
 			"x86_64-darwin" => "difft-x86_64-apple-darwin.tar.gz",
 			"x86_64-linux" => "difft-x86_64-unknown-linux-gnu.tar.gz",
 		}.freeze
+
+		JAVA_PLATFORMS = [
+			"arm64-darwin",
+			"aarch64-linux",
+			"x86_64-darwin",
+			"x86_64-linux",
+		].freeze
 	end
 end

@@ -31,6 +31,7 @@
 #  - pkg/difft-1.0.0-arm64-darwin.gem
 #  - pkg/difft-1.0.0-x86_64-darwin.gem
 #  - pkg/difft-1.0.0-x86_64-linux.gem
+#  - pkg/difft-1.0.0-java.gem
 #
 #  Note that in addition to the native gems, a vanilla "ruby" gem will also be created without
 #  either the `exe/difft` script or a binary executable present.
@@ -43,6 +44,7 @@
 #  - rake gem:arm64-darwin   # Build the arm64-darwin gem
 #  - rake gem:x86_64-darwin  # Build the x86_64-darwin gem
 #  - rake gem:x86_64-linux   # Build the x86_64-linux gem
+#  - rake gem:java           # Build the Java gem containing all native binaries
 #  - rake download           # Download all difft binaries
 #
 #  Modified rake tasks:
@@ -111,6 +113,18 @@ Difftastic::Upstream::NATIVE_PLATFORMS.each do |platform, filename|
 			FileUtils.chmod(0o755, exepath, verbose: true)
 		end
 	end
+end
+
+DIFFTASTIC_RAILS_GEMSPEC.dup.tap do |gemspec|
+	gemspec.platform = Gem::Platform.new("java")
+	java_exepaths = exepaths.select do |exepath|
+		Difftastic::Upstream::JAVA_PLATFORMS.include?(File.basename(File.dirname(exepath)))
+	end
+	gemspec.files += java_exepaths + ["LICENSE-DEPENDENCIES.md"]
+
+	gem_path = Gem::PackageTask.new(gemspec).define
+	desc "Build the Java gem with binaries for all supported hosts"
+	task "gem:java" => [gem_path]
 end
 
 desc "Download all binaries"
